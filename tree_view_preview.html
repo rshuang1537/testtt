@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+
+    <title>Tree Example</title>
+
+    <style>
+	
+	.node {
+		cursor: pointer;
+	}
+
+	.node circle {
+	  fill: #fff;
+	  stroke: steelblue;
+	  stroke-width: 3px;
+	}
+
+	.node text {
+	  font: 14px sans-serif;
+	}
+
+	.link {
+	  fill: none;
+	  stroke: #ccc;
+	  stroke-width: 2px;
+	}
+	
+    </style>
+
+  </head>
+
+  <body>
+    <body>
+        <h1></h1>TODO:
+        <h1></h1>a.數值轉比例
+        <h1></h1>b.加入觀測事件(特定action, behavior, result etc.)
+        <h1></h1>c.Cross App haha
+        <h1></h1> app_list = ['Vision_One', 'Operations_Dashboard', 'Attack_Surface_Discovery', 'Report_Management', 'Executive_Dashboard', 'Workbench']
+
+<!-- load the d3.js library -->	
+<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.17/d3.min.js"></script>
+	
+<script>
+
+
+
+var treeData = [
+{'parent': 'null', 'name': 'UBT_Base (10060) ', 'edge_name': 'UBT_Base (10060) ', 'children': [{'parent': 'UBT_Base (10060) ', 'name': 'ASRM (7203) ', 'edge_name': 'ASRM (7203) ', 'children': [{'parent': 'ASRM (7203) ', 'name': 'Attack_Surface_Discovery (4028) ', 'edge_name': 'Attack_Surface_Discovery (4028) ', 'children': [{'parent': 'Attack_Surface_Discovery (4028) ', 'name': 'Drilled_Down_Asset_Detail (2725) ', 'edge_name': 'Drilled_Down_Asset_Detail (2725) '}, {'parent': 'Attack_Surface_Discovery (4028) ', 'name': 'Drilled_Down_Asset_Graph (1395) ', 'edge_name': 'Drilled_Down_Asset_Graph (1395) '}, {'parent': 'Attack_Surface_Discovery (4028) ', 'name': 'Interacted_With_Attack_Surface_Discovery (3796) ', 'edge_name': 'Interacted_With_Attack_Surface_Discovery (3796) '}, {'parent': 'Attack_Surface_Discovery (4028) ', 'name': 'Taken_Remediation_Action (2) ', 'edge_name': 'Taken_Remediation_Action (2) '}, {'parent': 'Attack_Surface_Discovery (4028) ', 'name': 'Using_ASD_Advanced_Filtering (1516) ', 'edge_name': 'Using_ASD_Advanced_Filtering (1516) '}, {'parent': 'Attack_Surface_Discovery (4028) ', 'name': 'Using_ASD_Advanced_Sorting (1126) ', 'edge_name': 'Using_ASD_Advanced_Sorting (1126) '}, {'parent': 'Attack_Surface_Discovery (4028) ', 'name': 'Visited_Accounts_Assets (2050) ', 'edge_name': 'Visited_Accounts_Assets (2050) '}, {'parent': 'Attack_Surface_Discovery (4028) ', 'name': 'Visited_Cloud_Apps_Assets (1605) ', 'edge_name': 'Visited_Cloud_Apps_Assets (1605) '}, {'parent': 'Attack_Surface_Discovery (4028) ', 'name': 'Visited_Cloud_Assets (1250) ', 'edge_name': 'Visited_Cloud_Assets (1250) '}, {'parent': 'Attack_Surface_Discovery (4028) ', 'name': 'Visited_Devices_Assets (4028) ', 'edge_name': 'Visited_Devices_Assets (4028) '}, {'parent': 'Attack_Surface_Discovery (4028) ', 'name': 'Visited_Internet_Facing_Assets (2131) ', 'edge_name': 'Visited_Internet_Facing_Assets (2131) '}]}, {'parent': 'ASRM (7203) ', 'name': 'Executive_Dashboard (7196) ', 'edge_name': 'Executive_Dashboard (7196) ', 'children': [{'parent': 'Executive_Dashboard (7196) ', 'name': 'Attack_Overview (3108) ', 'edge_name': 'Attack_Overview (3108) '}, {'parent': 'Executive_Dashboard (7196) ', 'name': 'Executive_Dashboard_Drill_Down (3993) ', 'edge_name': 'Executive_Dashboard_Drill_Down (3993) '}, {'parent': 'Executive_Dashboard (7196) ', 'name': 'Exposure_Overview (3651) ', 'edge_name': 'Exposure_Overview (3651) '}, {'parent': 'Executive_Dashboard (7196) ', 'name': 'Security_Configuration (2753) ', 'edge_name': 'Security_Configuration (2753) '}, {'parent': 'Executive_Dashboard (7196) ', 'name': 'Visited_Attack_Surface (3007) ', 'edge_name': 'Visited_Attack_Surface (3007) '}]}, {'parent': 'ASRM (7203) ', 'name': 'Operations_Dashboard (925) ', 'edge_name': 'Operations_Dashboard (925) ', 'children': [{'parent': 'Operations_Dashboard (925) ', 'name': 'Interacted_With_Operations_Dashboard (373) ', 'edge_name': 'Interacted_With_Operations_Dashboard (373) '}, {'parent': 'Operations_Dashboard (925) ', 'name': 'Taken_Remediation_Action_On_OD (239) ', 'edge_name': 'Taken_Remediation_Action_On_OD (239) '}, {'parent': 'Operations_Dashboard (925) ', 'name': 'Visited_Account_Compromise_Risk_Factor (445) ', 'edge_name': 'Visited_Account_Compromise_Risk_Factor (445) '}, {'parent': 'Operations_Dashboard (925) ', 'name': 'Visited_Activity_And_Behaviors_Risk_Factor (335) ', 'edge_name': 'Visited_Activity_And_Behaviors_Risk_Factor (335) '}, {'parent': 'Operations_Dashboard (925) ', 'name': 'Visited_Cloud_Activity_Risk_Factor (459) ', 'edge_name': 'Visited_Cloud_Activity_Risk_Factor (459) '}, {'parent': 'Operations_Dashboard (925) ', 'name': 'Visited_Cloud_App_Activity_Risk_Factor (266) ', 'edge_name': 'Visited_Cloud_App_Activity_Risk_Factor (266) '}, {'parent': 'Operations_Dashboard (925) ', 'name': 'Visited_Threat_Detection_Risk_Factor (373) ', 'edge_name': 'Visited_Threat_Detection_Risk_Factor (373) '}, {'parent': 'Operations_Dashboard (925) ', 'name': 'Visited_Vulnerabilities_Risk_Factor (609) ', 'edge_name': 'Visited_Vulnerabilities_Risk_Factor (609) '}, {'parent': 'Operations_Dashboard (925) ', 'name': 'Visited_XDR_Detection_Risk_Factor (382) ', 'edge_name': 'Visited_XDR_Detection_Risk_Factor (382) '}]}, {'parent': 'ASRM (7203) ', 'name': 'Report_Management (2341) ', 'edge_name': 'Report_Management (2341) ', 'children': [{'parent': 'Report_Management (2341) ', 'name': 'Is_Report_Management_Active_By_Onetime_Past_30days (767) ', 'edge_name': 'Is_Report_Management_Active_By_Onetime_Past_30days (767) '}, {'parent': 'Report_Management (2341) ', 'name': 'Is_Report_Management_Active_By_Schedule_Past_30days (469) ', 'edge_name': 'Is_Report_Management_Active_By_Schedule_Past_30days (469) '}, {'parent': 'Report_Management (2341) ', 'name': 'Is_Report_Management_Active_Past_30days (1015) ', 'edge_name': 'Is_Report_Management_Active_Past_30days (1015) '}, {'parent': 'Report_Management (2341) ', 'name': 'Is_Report_Management_In_Use_Past_30days (2341) ', 'edge_name': 'Is_Report_Management_In_Use_Past_30days (2341) '}, {'parent': 'Report_Management (2341) ', 'name': 'Is_Report_Management_Interact_Past_30days (1410) ', 'edge_name': 'Is_Report_Management_Interact_Past_30days (1410) '}]}]}, {'parent': 'UBT_Base (10060) ', 'name': 'Threat_Intelligence (8413) ', 'edge_name': 'Threat_Intelligence (8413) ', 'children': [{'parent': 'Threat_Intelligence (8413) ', 'name': 'Campaign_Intelligence (515) ', 'edge_name': 'Campaign_Intelligence (515) '}, {'parent': 'Threat_Intelligence (8413) ', 'name': 'Intelligence_Report (7905) ', 'edge_name': 'Intelligence_Report (7905) '}, {'parent': 'Threat_Intelligence (8413) ', 'name': 'SO_Management (3279) ', 'edge_name': 'SO_Management (3279) '}, {'parent': 'Threat_Intelligence (8413) ', 'name': 'Sandbox_Analysis (1998) ', 'edge_name': 'Sandbox_Analysis (1998) '}]}, {'parent': 'UBT_Base (10060) ', 'name': 'Workflow_And_Automation (4455) ', 'edge_name': 'Workflow_And_Automation (4455) ', 'children': [{'parent': 'Workflow_And_Automation (4455) ', 'name': 'Response_Management (2706) ', 'edge_name': 'Response_Management (2706) '}, {'parent': 'Workflow_And_Automation (4455) ', 'name': 'Security_Playbooks (3814) ', 'edge_name': 'Security_Playbooks (3814) '}, {'parent': 'Workflow_And_Automation (4455) ', 'name': 'Service_Gateway (1892) ', 'edge_name': 'Service_Gateway (1892) '}]}, {'parent': 'UBT_Base (10060) ', 'name': 'XDR (6238) ', 'edge_name': 'XDR (6238) ', 'children': [{'parent': 'XDR (6238) ', 'name': 'Detection_Model_Management (4723) ', 'edge_name': 'Detection_Model_Management (4723) '}, {'parent': 'XDR (6238) ', 'name': 'OAT (4198) ', 'edge_name': 'OAT (4198) '}, {'parent': 'XDR (6238) ', 'name': 'Search (3204) ', 'edge_name': 'Search (3204) '}, {'parent': 'XDR (6238) ', 'name': 'Workbench (5021) ', 'edge_name': 'Workbench (5021) ', 'children': [{'parent': 'Workbench (5021) ', 'name': 'Email (1706) ', 'edge_name': 'Email (1706) '}, {'parent': 'Workbench (5021) ', 'name': 'Endpoint (4765) ', 'edge_name': 'Endpoint (4765) '}, {'parent': 'Workbench (5021) ', 'name': 'Endpoint_Email (2) ', 'edge_name': 'Endpoint_Email (2) '}, {'parent': 'Workbench (5021) ', 'name': 'Endpoint_Network (9) ', 'edge_name': 'Endpoint_Network (9) '}, {'parent': 'Workbench (5021) ', 'name': 'Multi_Layers (10) ', 'edge_name': 'Multi_Layers (10) '}, {'parent': 'Workbench (5021) ', 'name': 'Network (565) ', 'edge_name': 'Network (565) '}]}]}, {'parent': 'UBT_Base (10060) ', 'name': 'ZTSA (2279) ', 'edge_name': 'ZTSA (2279) '}]}
+];
+
+
+// ************** Generate the tree diagram	 *****************
+var margin = {top: 20, right: 120, bottom: 20, left: 180},
+	width = 2440 - margin.right - margin.left,//960 1440
+	height = 750 - margin.top - margin.bottom;//750 550
+	
+var i = 0,
+	duration = 750,
+	root;
+
+var tree = d3.layout.tree()
+	.size([height, width]);
+
+var diagonal = d3.svg.diagonal()
+	.projection(function(d) { return [d.y, d.x]; });
+
+var svg = d3.select("body").append("svg")
+	.attr("width", width + margin.right + margin.left)
+	.attr("height", height + margin.top + margin.bottom)
+  .append("g")
+	.attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
+root = treeData[0];
+root.x0 = height / 2;
+root.y0 = 0;
+// default not collapse
+function collapse(d) {
+  if (d.children) {
+    d._children = d.children;
+    d._children.forEach(collapse);
+    d.children = null;
+  }
+}
+root.children.forEach(collapse);
+// default not collapse
+
+update(root);
+
+d3.select(self.frameElement).style("height", "1000px", "width", "3840");//,"height", "800px, "width", "1500" haha
+
+function update(source) {
+
+  // Compute the new tree layout.
+  var nodes = tree.nodes(root).reverse(),
+	  links = tree.links(nodes);
+
+  // Normalize for fixed-depth.
+  nodes.forEach(function(d) { d.y = d.depth * 300; });//180 haha
+
+  // Update the nodes…
+  var node = svg.selectAll("g.node")
+	  .data(nodes, function(d) { return d.id || (d.id = ++i); });
+
+  // Enter any new nodes at the parent's previous position.
+  var nodeEnter = node.enter().append("g")
+	  .attr("class", "node")
+	  .attr("transform", function(d) { return "translate(" + source.y0 + "," + source.x0 + ")"; })
+	  .on("click", click);
+
+  nodeEnter.append("circle")
+	  .attr("r", 1e-6)
+	  .style("fill", function(d) { return d._children ? "lightsteelblue" : "#fff"; });
+
+  nodeEnter.append("text")
+    .attr("x", function(d) { return d.children || d._children ? -5 : 15; })//-13 : 13
+	  .attr("dy", "-.35em")//".35em"
+	  .attr("text-anchor", function(d) { return d.children || d._children ? "end" : "start"; })
+	  .text(function(d) { return d.name; })
+	  .style("fill-opacity", 1e-6)
+      .style('fill', 'gray');// haha
+
+  // Transition nodes to their new position.
+  var nodeUpdate = node.transition()
+	  .duration(duration)
+	  .attr("transform", function(d) { return "translate(" + d.y + "," + d.x + ")"; });
+
+  nodeUpdate.select("circle")
+	  .attr("r", 10)
+	  .style("fill", function(d) { return d._children ? "lightsteelblue" : "#fff"; });
+
+  nodeUpdate.select("text")
+	  .style("fill-opacity", 1);
+
+  // Transition exiting nodes to the parent's new position.
+  var nodeExit = node.exit().transition()
+	  .duration(duration)
+	  .attr("transform", function(d) { return "translate(" + source.y + "," + source.x + ")"; })
+	  .remove();
+
+  nodeExit.select("circle")
+	  .attr("r", 1e-6);
+
+  nodeExit.select("text")
+	  .style("fill-opacity", 1e-6);
+
+  // Update the links…
+  var link = svg.selectAll("path.link")
+	  .data(links, function(d) { return d.target.id; });
+
+  // Enter any new links at the parent's previous position.
+  link.enter().insert("path", "g")
+	  .attr("class", "link")
+	  .attr("d", function(d) {
+		var o = {x: source.x0, y: source.y0};
+		return diagonal({source: o, target: o});
+	  });
+
+  // Transition links to their new position.
+  link.transition()
+	  .duration(duration)
+	  .attr("d", diagonal);
+
+  // Transition exiting nodes to the parent's new position.
+  link.exit().transition()
+	  .duration(duration)
+	  .attr("d", function(d) {
+		var o = {x: source.x, y: source.y};
+		return diagonal({source: o, target: o});
+	  })
+	  .remove();
+
+  // Stash the old positions for transition.
+  nodes.forEach(function(d) {
+	d.x0 = d.x;
+	d.y0 = d.y;
+  });
+}
+
+// Toggle children on click.
+function click(d) {
+  if (d.children) {
+	d._children = d.children;
+	d.children = null;
+  } else {
+	d.children = d._children;
+	d._children = null;
+  }
+  update(d);
+}
+
+</script>
+	
+  </body>
+</html>
